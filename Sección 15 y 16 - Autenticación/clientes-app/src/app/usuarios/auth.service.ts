@@ -29,7 +29,7 @@ export class AuthService {
     if (this._token != null) {
       return this._token;
     } else if (this._token == null && sessionStorage.getItem('token') != null) {
-      this._token = sessionStorage.getItem('usuario');
+      this._token = sessionStorage.getItem('token');
       return this._token;
     }
     return null;
@@ -65,7 +65,7 @@ export class AuthService {
     sessionStorage.setItem('token', access_token);
   }
 
-  private obtenerPayload(access_token:string): any {
+  public obtenerPayload(access_token:string): any {
     if (access_token != null) {
       return JSON.parse(window.atob(access_token.split(".")[1]));
     }

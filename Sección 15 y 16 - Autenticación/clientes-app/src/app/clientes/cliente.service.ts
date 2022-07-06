@@ -83,6 +83,7 @@ export class ClienteService {
     return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(
       catchError(e => {
 
+        //Con los Guards esto no hace falta
         if (this.isNoAutorizado(e)) {
           return throwError(()=>e);
         }
